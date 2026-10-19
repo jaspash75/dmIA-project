@@ -1,0 +1,10 @@
+event_id,minute,action,corridor_id,incident_type,severity,locality,verified,status,evidence_ref,coordinates,hours_ago,target_event_id,description
+S1,0,report,NIL-S02,Electricity pole fallen across path,Critical,Avarahalla HT line,false,Open,PHOTO-201,11.5360 76.6521,1,,SIMULATED ONLY: storm knocks an electricity pole onto the corridor; live wire near the elephant path.
+S2,1,report,NIL-S03,Tree fallen across path,Low,Singara forest track,true,Open,PHOTO-202,11.5401 76.6330,2,,SIMULATED ONLY: a large tree falls on the path; elephants can walk around it.
+S3,2,report,NIL-KM,Rumour: elephant blocking road,Medium,Mangala road,false,Open,,,0.5,,SIMULATED ONLY: driver reports an 'elephant' on the road at night; no photo.
+S4,3,report,NIL-S01,Old WhatsApp forward: herd stuck at fence,High,Bokkapuram,false,Open,,,52,,SIMULATED ONLY: a two-day-old message is forwarded again.
+S5,4,report,NIL-S04,Herd stuck at flume after storm,Critical,Moyar flume crossing,false,Open,PHOTO-205,,1,,SIMULATED ONLY: flood water makes the concrete flume impossible to cross.
+V1,5,verify_report,NIL-S02,,,,true,,,,,S1,SIMULATED ONLY: lineman confirms the fallen pole is live.
+C3,6,close_report,NIL-KM,,,,,,,,,S3,SIMULATED ONLY: it was a gaur (Indian bison) not an elephant; rumour closed.
+V5,7,verify_report,NIL-S04,,,,true,,,,,S5,SIMULATED ONLY: guard confirms the herd is stuck at the flume.
+B5,8,disable_link,NIL-S04,,,,,,,,,,SIMULATED ONLY: the flooded flume blocks the Moyar–Avarahalla link in the model.

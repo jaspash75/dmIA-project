@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WildGuard · Discrete Maths for Nilgiri Elephant Corridors</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap nav-row">
+    <a class="brand" href="#home"><span class="brand-mark">W</span><span><b>WildGuard</b><small>Nilgiri corridor maths</small></span></a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="#home" data-nav="home">Home</a>
+      <a href="#map" data-nav="map">Corridor map</a>
+      <a href="#m1" data-nav="modules">Maths modules</a>
+      <a href="#data" data-nav="data">Field data</a>
+    </nav>
+  </div>
+  <div class="module-rail" id="moduleRail" hidden>
+    <div class="wrap">
+      <a class="rail-link" href="#m1"><span>01</span>Logic</a>
+      <a class="rail-link" href="#m2"><span>02</span>Number theory</a>
+      <a class="rail-link" href="#m3"><span>03</span>Relations</a>
+      <a class="rail-link" href="#m4"><span>04</span>Posets &amp; lattices</a>
+      <a class="rail-link" href="#m5"><span>05</span>Functions &amp; pigeonhole</a>
+      <a class="rail-link" href="#m6"><span>06</span>Graphs</a>
+      <a class="rail-link" href="#m7"><span>07</span>Groups &amp; codes</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ============================================================ HOME -->
+<section class="view" id="view-home">
+  <div class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Nilgiri Biosphere · Discrete Mathematics</span>
+      <h1>Keeping elephant corridors <em>connected</em> with discrete maths.</h1>
+      <p class="lead">When a field report says a corridor may be blocked, a coordinator has to decide fast: is it urgent, what evidence is missing, who goes, and is the network still connected? Each answer below is a calculation.</p>
+      <div class="hero-actions">
+        <a class="btn btn-amber" href="#m1">Start with Module 1 →</a>
+        <button class="btn btn-ghost" type="button" data-storm>▶ Watch “Storm night” live</button>
+        <a class="btn btn-ghost" href="#map">Open the corridor map</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap stat-strip">
+    <div class="stats">
+      <a class="stat" href="#m1"><b id="statUrgent">–</b><span>Urgent reports</span><small>U = V ∧ R ∧ S ∧ O is true</small></a>
+      <a class="stat" href="#m4"><b id="statEvidence">–</b><span>Complete evidence</span><small>Report sets equal to the top of the lattice</small></a>
+      <a class="stat" href="#m5"><b id="statLoad">–</b><span>Minimum busiest load</span><small>⌈pending ÷ teams⌉</small></a>
+      <a class="stat" href="#m6"><b id="statComponents">–</b><span>Connected components</span><small>1 means every reserve is reachable</small></a>
+    </div>
+  </div>
+
+
+  <section class="section why-band">
+    <div class="wrap">
+      <div class="section-head">
+        <div><span class="eyebrow">Why this project</span><h2>A blocked corridor doesn't stop elephants. It sends them into villages.</h2></div>
+        <p>Elephants must keep moving between forests for food and water. When their corridor is cut by a fence, road, canal or power line, they detour through farms, railway lines and homes. That is where people and elephants die.</p>
+      </div>
+      <div class="photo-stats">
+        <article class="photo-stat" style="--bg:url('https://images.unsplash.com/photo-1743065528943-438a6a981631?auto=format&fit=crop&w=1400&q=80')"><b>2,853</b><span>people killed in elephant encounters in India, 2019–2023</span><small>Lok Sabha reply, 29 July 2024</small></article>
+        <article class="photo-stat" style="--bg:url('https://images.unsplash.com/photo-1552772588-12592fc15a64?auto=format&fit=crop&w=1400&q=80')"><b>528</b><span>elephants died of unnatural causes in 5 years: 392 electrocuted, 73 hit by trains</span><small>Lok Sabha reply, 29 July 2024</small></article>
+        <article class="photo-stat" style="--bg:url('https://images.unsplash.com/photo-1505148230895-d9a785a555fa?auto=format&fit=crop&w=1400&q=80')"><b>2020</b><span>Supreme Court upheld the Segur corridor notification and elephants' right of passage, so resorts must make way</span><small>SC judgment, 14 Oct 2020 · 38 resorts reported in the corridor (PIB, Dec 2024)</small></article>
+      </div>
+      <p class="source-line">Sources: <a href="https://www.business-standard.com/india-news/india-lost-528-elephants-due-to-unnatural-causes-in-5-years-govt-data-124072900824_1.html" target="_blank" rel="noopener">Business Standard on MoEFCC Lok Sabha data</a> · <a href="https://www.downtoearth.org.in/news/wildlife-and-biodiversity/nilgiris-elephant-corridor-sc-upholds-madras-hc-order-affirming-animals-right-of-passage-73791" target="_blank" rel="noopener">Down To Earth on the 2020 Supreme Court order</a> · <a href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2082534" target="_blank" rel="noopener">PIB, 9 Dec 2024</a></p>
+
+      <h3 class="sub-head">What blocks a corridor</h3>
+      <div class="threats">
+        <article class="threat" style="--bg:url('https://images.unsplash.com/photo-1702641397914-30fbd18c0d93?auto=format&fit=crop&w=1400&q=80')"><span class="tag">Fences &amp; resorts</span><h4>Resort and farm fences</h4><p>Bokkapuram and Mavanallah sit inside the Segur corridor.</p></article>
+        <article class="threat" style="--bg:url('https://images.unsplash.com/photo-1754575740173-52866a523392?auto=format&fit=crop&w=1400&q=80')"><span class="tag">Roads</span><h4>Busy highways</h4><p>The Mangala–Jakkahalli road crosses Kaniyanpura–Moyar.</p></article>
+        <article class="threat" style="--bg:url('https://images.unsplash.com/photo-1552772588-12592fc15a64?auto=format&fit=crop&w=1400&q=80')"><span class="tag">Power lines</span><h4>Sagging HT lines</h4><p>Electrocution is the biggest unnatural killer of elephants.</p></article>
+        <article class="threat" style="--bg:url('https://images.unsplash.com/photo-1633477240406-706aef553993?auto=format&fit=crop&w=1400&q=80')"><span class="tag">Railways &amp; canals</span><h4>Tracks and channels</h4><p>A 7 km flume channel runs from Masinagudi to Moyar.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section story-band">
+    <div class="wrap story-grid">
+      <div class="story-photo" style="--bg:url('https://images.unsplash.com/photo-1675246198306-9ba2a1aee6de?auto=format&fit=crop&w=1400&q=80')"></div>
+      <div>
+        <span class="eyebrow">The everyday problem</span>
+        <h2>06:00, Masinagudi range office.</h2>
+        <p class="story-lead" id="storyLead">Reports came in overnight from villagers, guards and camera traps. There are only three field teams.</p>
+        <ul class="story-points">
+          <li><b>Which reports are real?</b> Many are rumours or days old.</li>
+          <li><b>Which blockage hurts most?</b> Some corridors have a detour; some are the only way through.</li>
+          <li><b>Who goes where, and when?</b> Nobody should be overloaded, and proof needs camera, patrol and night-watch records from the same time.</li>
+        </ul>
+        <div class="story-punch" id="storyPunch"></div>
+        <button class="btn btn-amber" type="button" data-storm style="margin-top:18px">▶ Play “Storm night” live</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <div><span class="eyebrow">How the maths solves the problem</span><h2>One field report, seven questions, seven calculations.</h2></div>
+        <p>Each module takes a real question a corridor coordinator faces and answers it with one syllabus topic. The results shown here update from the reports and links on the Field data page.</p>
+      </div>
+      <div class="pipeline" id="pipeline"></div>
+    </div>
+  </section>
+
+  <section class="section decision-band">
+    <div class="wrap">
+      <div class="section-head">
+        <div><span class="eyebrow">The implementation</span><h2>The final decision for every pending report.</h2></div>
+        <p>Each column is calculated by one module. Rows are sorted by the priority rule from Modules 1, 6 and 3, assigned by Module 5, timed by Module 2, checked by Module 4 and encoded by Module 7.</p>
+      </div>
+      <div class="decision-summary" id="decisionSummary"></div>
+      <article class="card"><div class="table-scroll" id="decisionTable"></div></article>
+      <h3 class="sub-head">What the field teams actually receive</h3>
+      <div class="orders" id="ordersList"></div>
+    </div>
+  </section>
+
+  <section class="section quiz-band">
+    <div class="wrap">
+      <div class="section-head">
+        <div><span class="eyebrow">Your turn</span><h2>Which report should the rangers go to first?</h2></div>
+        <p>Pick one. WildGuard then shows its answer using <b>lexicographic order</b>: compare the reports key by key (confirmed &amp; urgent, only path, routes cut, severity) and the first difference decides, the way words are ordered in a dictionary.</p>
+      </div>
+      <div id="quiz"></div>
+    </div>
+  </section>
+
+  <section class="section impact-band">
+    <div class="wrap">
+      <div class="section-head">
+        <div><span class="eyebrow">Does the maths make a difference?</span><h2>Same reports, same three teams. Two ways of working.</h2></div>
+        <p><b>Without WildGuard</b>, the office works through the inbox in the order reports arrived. <b>With WildGuard</b>, the seven modules decide the order. Both use the same teams and the same checkpoints.</p>
+      </div>
+      <div id="impact"></div>
+    </div>
+  </section>
+
+  <section class="section network-band">
+    <div class="wrap">
+      <div class="section-head">
+        <div><span class="eyebrow">The model</span><h2>The corridor network as a graph G = (V, E).</h2></div>
+        <p>Vertices are forest reserves. Edges are the officially listed elephant corridors that join them. Blocking a corridor removes an edge.</p>
+      </div>
+      <div class="network-grid">
+        <div class="dark-card"><svg class="svg-box" id="homeGraph" viewBox="0 0 640 380" role="img" aria-label="Corridor graph"></svg></div>
+        <div class="dark-card">
+          <ul class="fact-list">
+            <li><b id="factV">6</b><span>forest reserves (vertices)</span></li>
+            <li><b id="factE">5</b><span>active corridor links (edges) out of the four Segur Plateau corridors and Kaniyanpura–Moyar</span></li>
+            <li><b id="factB">5</b><span>bridges: links whose loss splits the network</span></li>
+          </ul>
+          <p class="source-note">Corridor list from MoEFCC / Project Elephant, <a href="https://moef.gov.in/uploads/2023/11/PE-Elephant-Corridor-of-India-2023.pdf" target="_blank" rel="noopener">Elephant Corridors of India 2023</a>, pp. 130, 147–150. Endpoints are a simplified model, not surveyed boundaries.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ============================================================ MAP -->
+<section class="view" id="view-map">
+  <header class="mod-hero" style="--img:url('https://images.unsplash.com/photo-1664892378626-24ec026ead22?auto=format&fit=crop&w=2000&q=80')"><div class="wrap">
+    <span class="eyebrow">Interactive corridor map · Graph theory in action</span>
+    <h1>Block a corridor. Watch the herd get split.</h1>
+    <p>Each circle is a forest reserve and each path is an elephant corridor. Click a corridor to block or unblock it. The maths on the right recalculates instantly: how many separate elephant populations there are, which corridors are bridges, and how many forest-to-forest routes are still open.</p>
+  </div></header>
+  <div class="wrap">
+    <div class="map-layout">
+      <article class="card map-card">
+        <div class="map-toolbar">
+          <button class="btn btn-line btn-sm" id="mapReset" type="button">↺ Saved network</button>
+          <button class="btn btn-line btn-sm" id="mapClear" type="button">Unblock everything</button>
+          <button class="btn btn-amber btn-sm" type="button" data-storm>▶ Storm night</button>
+        </div>
+        <svg class="map-svg" id="mapSvg" viewBox="0 0 1000 620" role="img" aria-label="Interactive corridor map"></svg>
+        <div class="legend-row"><span><i style="background:#c9e36b"></i>Open corridor (elephants moving)</span><span><i style="background:#e05a43"></i>Blocked corridor</span><span><i style="background:#ffd54a"></i>Proposed restoration</span><span>Click a corridor to block or unblock it</span></div>
+        <p class="map-event" id="mapEvent">Click any corridor to see what happens to the elephants.</p>
+      </article>
+      <aside class="map-side">
+        <article class="card pop-card" id="popCard"></article>
+        <article class="card"><div class="card-title"><span class="step">∑</span><h2>Live maths</h2></div><div class="working" id="mapWorking"></div></article>
+      </aside>
+    </div>
+
+    <article class="card wide-card applied">
+      <div class="card-title"><span class="step">+</span><h2>Conservation planner: where should a corridor be restored?</h2><span class="card-note">Tests every possible new link</span></div>
+      <div class="field-note"><div class="field-thumb" style="--bg:url('https://images.unsplash.com/photo-1757439829045-3b245934da2a?auto=format&fit=crop&w=700&q=80')"></div><p><b>In the field.</b> Clearing blockages fixes today's problem. Long-term conservation means making the habitat <b>resilient</b>, so that one blocked path can never split the elephants again. Conservation groups and the Forest Department can buy or secure land to restore an old corridor. Which one should they choose?</p></div>
+      <div class="formula">e lies on a cycle  ⇔  e is not a bridge<small>Adding a new corridor u–v creates a cycle along the existing path u → … → v, so every bridge on that path stops being a bridge. The longest path in a tree is its diameter, so linking the two ends of the diameter protects the most corridors.</small></div>
+      <div class="table-scroll" id="restoreTable" style="margin-top:20px"></div>
+      <div class="answer card" id="restoreAnswer" style="margin-top:20px"></div>
+    </article>
+    <nav class="pager"><a href="#home"><small>Back</small><b>← Home</b></a><a class="next" href="#m1"><small>The maths behind it</small><b>01 · Logic →</b></a></nav>
+  </div>
+</section>
+
+<!-- ============================================================ M1 LOGIC -->
+<section class="view" id="view-m1">
+  <header class="mod-hero" style="--img:url(\'https://images.unsplash.com/photo-1697613688115-bf49ecc5a56c?auto=format&fit=crop&w=2000&q=80\')"><div class="wrap">
+    <span class="eyebrow">Module 01 · Propositional logic &amp; truth tables</span>
+    <h1>Should this report be treated as urgent?</h1>
+    <p>Four yes/no facts about a report are combined with AND. Only when all four are true does it go to urgent human review.</p>
+  </div></header>
+  <div class="wrap">
+    <div class="mod-body">
+      <div class="col">
+        <article class="card">
+          <div class="card-title"><span class="step">1</span><h2>The maths</h2></div>
+          <p class="lead-text">Each condition is a proposition with value 1 (true) or 0 (false). The conjunction ∧ is true only when every operand is true.</p>
+          <div class="formula">U = V ∧ R ∧ S ∧ O</div>
+          <dl class="legend">
+            <dt>V</dt><dd>report is verified by a field team</dd>
+            <dt>R</dt><dd>observed within the last 24 hours</dd>
+            <dt>S</dt><dd>severity is High or Critical</dd>
+            <dt>O</dt><dd>status is Open or In review</dd>
+          </dl>
+        </article>
+        <article class="card">
+          <div class="card-title"><span class="step">2</span><h2>Your inputs</h2></div>
+          <div class="inputs">
+            <label class="field">Load the values from a saved report
+              <select class="input" id="m1Report"></select>
+            </label>
+            <div class="bool-grid" id="m1Bools"></div>
+            <p class="hint">Tap a card to switch it between 0 and 1.</p>
+          </div>
+        </article>
+      </div>
+      <div class="col">
+        <article class="card">
+          <div class="card-title"><span class="step">3</span><h2>Working</h2></div>
+          <div class="working" id="m1Working"></div>
+        </article>
+        <article class="card answer" id="m1Answer"></article>
+      </div>
+    </div>
+    <article class="card wide-card">
+      <div class="card-title"><h2>Truth table: all 2⁴ = 16 cases</h2><span class="card-note">Your current case is highlighted</span></div>
+      <div class="tt-wrap" id="m1Table"></div>
+    </article>
+    <article class="card wide-card applied">
+      <div class="card-title"><span class="step">5</span><h2>Used in WildGuard: the first priority key</h2><span class="card-note">Live pending queue</span></div>
+      <div class="field-note"><div class="field-thumb" style="--bg:url('https://images.unsplash.com/photo-1743065528943-438a6a981631?auto=format&fit=crop&w=700&q=80')"></div><p><b>In the field.</b> A villager texts “elephants at the fence” at 2 a.m. Is it confirmed? From tonight or last week? Serious? Still happening? Logic turns those four questions into one yes/no answer.</p></div>
+      <p class="applied-role">Input: V, R, S, O of every pending report. Output: U. Every report with U = 1 is handled before any report with U = 0, so a verified, recent, severe, open obstruction can never wait behind a routine one.</p>
+      <div class="table-scroll" id="m1Applied"></div>
+    </article>
+    <nav class="pager"><a class="next" href="#m2"><small>Next module</small><b>02 · Number theory →</b></a></nav>
+  </div>
+</section>
+
+<!-- ============================================================ M2 NUMBER THEORY -->
+<section class="view" id="view-m2">
+  <header class="mod-hero" style="--img:url(\'https://images.unsplash.com/photo-1675246198306-9ba2a1aee6de?auto=format&fit=crop&w=2000&q=80\')"><div class="wrap">
+    <span class="eyebrow">Module 02 · Number theory: GCD &amp; LCM</span>
+    <h1>When will all monitoring checks happen at the same time?</h1>
+    <p>Camera traps, foot patrols and night watch run on different repeating intervals. The LCM tells us when they line up for a joint verification; Euclid's algorithm gives the GCD it needs.</p>
+  </div></header>
+  <div class="wrap">
+    <div class="mod-body">
+      <div class="col">
+        <article class="card">
+          <div class="card-title"><span class="step">1</span><h2>The maths</h2></div>
+          <p class="lead-text">Euclid's algorithm repeats division with remainder until the remainder is 0. The last non-zero remainder is the GCD. The LCM then follows from it.</p>
+          <div class="formula">a = q·b + r  ⇒  gcd(a, b) = gcd(b, r)<small>repeat until r = 0</small></div>
+          <div class="formula">lcm(a, b) = (a × b) ÷ gcd(a, b)<small>for three schedules: lcm(a, b, c) = lcm(lcm(a, b), c)</small></div>
+        </article>
+        <article class="card">
+          <div class="card-title"><span class="step">2</span><h2>Your inputs (minutes)</h2></div>
+          <div class="inputs">
+            <div class="input-row three">
+              <label class="field">Camera-trap check<input class="input mono" id="m2a" type="number" min="1" value="15"></label>
+              <label class="field">Foot patrol<input class="input mono" id="m2b" type="number" min="1" value="20"></label>
+              <label class="field">Night watch<input class="input mono" id="m2c" type="number" min="1" value="30"></label>
+            </div>
+            <label class="field">Shift starts at (all checks start together)<input class="input mono" id="m2start" type="time" value="06:00"></label>
+            <p class="hint">Leave the third box empty to use only two schedules. Calculating also saves these values as the live verification timetable.</p>
+            <div class="btn-row" style="margin-top:0"><button class="btn btn-dark btn-sm" id="m2Calc">Calculate</button><button class="btn btn-line btn-sm" data-preset="40,60,">Try 40, 60</button><button class="btn btn-line btn-sm" data-preset="18,24,45">Try 18, 24, 45</button></div>
+          </div>
+        </article>
+      </div>
+      <div class="col">
+        <article class="card">
+          <div class="card-title"><span class="step">3</span><h2>Working</h2></div>
+          <div class="working" id="m2Working"></div>
+        </article>
+        <article class="card answer" id="m2Answer"></article>
+      </div>
+    </div>
+    <article class="card wide-card">
+      <div class="card-title"><h2>Timeline of checks</h2><span class="card-note">Amber marks = every schedule checks at once</span></div>
+      <div class="timeline" id="m2Timeline"></div>
+    </article>
+    <article class="card wide-card applied">
+      <div class="card-title"><span class="step">5</span><h2>Used in WildGuard: the verification timetable</h2><span class="card-note">Live pending queue</span></div>
+      <div class="field-note"><div class="field-thumb" style="--bg:url('https://images.unsplash.com/photo-1675246198306-9ba2a1aee6de?auto=format&fit=crop&w=700&q=80')"></div><p><b>In the field.</b> A sighting counts as proven only when camera-trap footage, patrol notes and the night-watch log cover the same moment. Number theory finds when that happens.</p></div>
+      <p class="applied-role">A report can only be verified when camera footage, patrol notes and night-watch logs exist for the same minute. That happens every L = lcm(intervals) minutes. Each team verifies one report per joint checkpoint, so its k-th report is verified at shift start + k·L.</p>
+      <div class="table-scroll" id="m2Applied"></div>
+    </article>
+    <nav class="pager"><a href="#m1"><small>Previous</small><b>← 01 · Logic</b></a><a class="next" href="#m3"><small>Next module</small><b>03 · Relations →</b></a></nav>
+  </div>
+</section>
+
+<!-- ============================================================ M3 RELATIONS -->
+<section class="view" id="view-m3">
+  <header class="mod-hero" style="--img:url(\'https://images.unsplash.com/photo-1664892378626-24ec026ead22?auto=format&fit=crop&w=2000&q=80\')"><div class="wrap">
+    <span class="eyebrow">Module 03 · Relations &amp; Warshall's algorithm</span>
+    <h1>Can an elephant still get from one reserve to another?</h1>
+    <p>"Directly linked" is a relation R on the set of reserves. Its transitive closure R* answers "linked through any chain of corridors". Block a link and see whether the answer changes.</p>
+  </div></header>
+  <div class="wrap">
+    <div class="mod-body">
+      <div class="col">
+        <article class="card">
+          <div class="card-title"><span class="step">1</span><h2>The maths</h2></div>
+          <p class="lead-text">R is stored as a 0/1 matrix M. Warshall's algorithm allows one more intermediate vertex k at each stage. After all n stages the matrix is R*.</p>
+          <div class="formula">W<sub>k</sub>[i][j] = W<sub>k−1</sub>[i][j] ∨ (W<sub>k−1</sub>[i][k] ∧ W<sub>k−1</sub>[k][j])<small>W₀ = M (direct links plus reflexive pairs), Wₙ = R*</small></div>
+        </article>
+        <article class="card">
+          <div class="card-title"><span class="step">2</span><h2>Your inputs</h2></div>
+          <div class="inputs">
+            <div class="input-row">
+              <label class="field">From reserve<select class="input" id="m3From"></select></label>
+              <label class="field">To reserve<select class="input" id="m3To"></select></label>
+            </div>
+            <label class="field">What if this corridor is blocked?
+              <select class="input" id="m3Block"></select>
+              <span class="hint">This is a what-if only. It does not change your saved network.</span>
+            </label>
+          </div>
+        </article>
+      </div>
+      <div class="col">
+        <article class="card">
+          <div class="card-title"><span class="step">3</span><h2>Working</h2></div>
+          <div class="working" id="m3Working"></div>
+        </article>
+        <article class="card answer" id="m3Answer"></article>
+      </div>
+    </div>
+    <article class="card wide-card">
+      <div class="card-title"><h2>Reachability matrix R*</h2><span class="card-note">Your pair is outlined · open a stage to see which 1s it adds</span></div>
+      <div class="matrix-wrap" id="m3Matrix"></div>
+      <div id="m3Stages"></div>
+    </article>
+    <article class="card wide-card applied">
+      <div class="card-title"><span class="step">5</span><h2>Used in WildGuard: the connectivity-loss score</h2><span class="card-note">Live pending queue</span></div>
+      <div class="field-note"><div class="field-thumb" style="--bg:url('https://images.unsplash.com/photo-1664892378626-24ec026ead22?auto=format&fit=crop&w=700&q=80')"></div><p><b>In the field.</b> A blockage matters because of the journeys it stops, like Moyar to Singara or Kaniyanpura to Segur. Warshall's algorithm counts every journey that is lost.</p></div>
+      <p class="applied-role">For each reported corridor e, R* is computed for G and for G − e. The difference |R*(G)| − |R*(G − e)| is the number of reserve pairs elephants could no longer travel between. This is the third priority key: a report that threatens more routes goes first.</p>
+      <div class="table-scroll" id="m3Applied"></div>
+    </article>
+    <nav class="pager"><a href="#m2"><small>Previous</small><b>← 02 · Number theory</b></a><a class="next" href="#m4"><small>Next module</small><b>04 · Posets &amp; lattices →</b></a></nav>
+  </div>
+</section>
+
+<!-- ============================================================ M4 POSETS -->
+<section class="view" id="view-m4">
+  <header class="mod-hero" style="--img:url(\'https://images.unsplash.com/photo-1757439829045-3b245934da2a?auto=format&fit=crop&w=2000&q=80\')"><div class="wrap">
+    <span class="eyebrow">Module 04 · Partial orders &amp; lattices</span>
+    <h1>How complete is the evidence, and what is still missing?</h1>
+    <p>A report can carry four kinds of evidence. All possible evidence sets, ordered by ⊆, form a lattice. Where a report sits in it tells us exactly what to collect next.</p>
+  </div></header>
+  <div class="wrap">
+    <div class="mod-body">
+      <div class="col">
+        <article class="card">
+          <div class="card-title"><span class="step">1</span><h2>The maths</h2></div>
+          <p class="lead-text">(P(E), ⊆) is a partial order: reflexive, antisymmetric and transitive. It is a lattice because any two sets have a join (∪) and a meet (∩).</p>
+          <div class="formula">E = {L, T, G, P}   |P(E)| = 2⁴ = 16<small>S ∨ X = S ∪ X,  S ∧ X = S ∩ X,  missing = E \ S</small></div>
+          <dl class="legend">
+            <dt>L</dt><dd>locality name</dd>
+            <dt>T</dt><dd>observation time</dd>
+            <dt>G</dt><dd>GPS coordinates</dd>
+            <dt>P</dt><dd>photo / evidence reference</dd>
+          </dl>
+        </article>
+        <article class="card">
+          <div class="card-title"><span class="step">2</span><h2>Your inputs</h2></div>
+          <div class="inputs">
+            <label class="field">Load the evidence from a saved report
+              <select class="input" id="m4Report"></select>
+            </label>
+            <div class="checks" id="m4Checks"></div>
+          </div>
+        </article>
+      </div>
+      <div class="col">
+        <article class="card">
+          <div class="card-title"><span class="step">3</span><h2>Working</h2></div>
+          <div class="working" id="m4Working"></div>
+        </article>
+        <article class="card answer" id="m4Answer"></article>
+      </div>
+    </div>
+    <article class="card wide-card">
+      <div class="card-title"><h2>Hasse diagram of (P(E), ⊆)</h2><span class="card-note">Bottom = no evidence · top = complete</span></div>
+      <svg class="svg-box" id="m4Hasse" viewBox="0 0 1000 470" role="img" aria-label="Hasse diagram"></svg>
+      <div class="legend-row"><span><i style="background:#e39a2f"></i>Your report S</span><span><i style="background:#2b5f41"></i>Path S → E (collect one field per step)</span><span><i style="background:#e2dccb"></i>Other evidence sets</span></div>
+    </article>
+    <article class="card wide-card applied">
+      <div class="card-title"><span class="step">5</span><h2>Used in WildGuard: the field team's evidence checklist</h2><span class="card-note">Live pending queue</span></div>
+      <div class="field-note"><div class="field-thumb" style="--bg:url('https://images.unsplash.com/photo-1702641397914-30fbd18c0d93?auto=format&fit=crop&w=700&q=80')"></div><p><b>In the field.</b> The Forest Department can't remove a resort fence on a rumour. It needs the place, time, GPS location and a photo. The lattice shows exactly what is still missing.</p></div>
+      <p class="applied-role">Each report's evidence set S is placed in the lattice. E \ S is the exact list of what the assigned team must collect at its checkpoint, and the first missing field is the next action.</p>
+      <div class="table-scroll" id="m4Applied"></div>
+    </article>
+    <nav class="pager"><a href="#m3"><small>Previous</small><b>← 03 · Relations</b></a><a class="next" href="#m5"><small>Next module</small><b>05 · Functions &amp; pigeonhole →</b></a></nav>
+  </div>
+</section>
+
+<!-- ============================================================ M5 FUNCTIONS -->
+<section class="view" id="view-m5">
+  <header class="mod-hero" style="--img:url(\'https://images.unsplash.com/photo-1666292332928-a6da653dc842?auto=format&fit=crop&w=2000&q=80\')"><div class="wrap">
+    <span class="eyebrow">Module 05 · Functions &amp; the pigeonhole principle</span>
+    <h1>How many reports must the busiest field team handle?</h1>
+    <p>Assigning every pending report to one team is a function f : Reports → Teams. The pigeonhole principle gives a load no assignment can beat.</p>
+  </div></header>
+  <div class="wrap">
+    <div class="mod-body">
+      <div class="col">
+        <article class="card">
+          <div class="card-title"><span class="step">1</span><h2>The maths</h2></div>
+          <p class="lead-text">If n reports go into m teams, at least one team receives at least ⌈n/m⌉ reports. f can be one-to-one only when n ≤ m, and onto only when n ≥ m.</p>
+          <div class="formula">max load ≥ ⌈ n / m ⌉<small>n = q·m + r  ⇒  r teams get q + 1 reports, the rest get q</small></div>
+        </article>
+        <article class="card">
+          <div class="card-title"><span class="step">2</span><h2>Your inputs</h2></div>
+          <div class="inputs">
+            <div class="input-row">
+              <label class="field">n = pending reports<input class="input mono" id="m5n" type="number" min="0"></label>
+              <label class="field">m = available teams<input class="input mono" id="m5m" type="number" min="0"></label>
+            </div>
+            <div class="btn-row" style="margin-top:0"><button class="btn btn-line btn-sm" id="m5Live">Use live values</button></div>
+            <div class="edge-list" id="m5Teams"></div>
+            <p class="hint">Switching a team off changes m in the live data.</p>
+          </div>
+        </article>
+      </div>
+      <div class="col">
+        <article class="card">
+          <div class="card-title"><span class="step">3</span><h2>Working</h2></div>
+          <div class="working" id="m5Working"></div>
+        </article>
+        <article class="card answer" id="m5Answer"></article>
+      </div>
+    </div>
+    <article class="card wide-card">
+      <div class="card-title"><h2 id="m5VisualTitle">The function f : Reports → Teams</h2><span class="card-note">Amber = urgent report (assigned first)</span></div>
+      <div class="bars" id="m5Bars"></div>
+    </article>
+    <article class="card wide-card applied">
+      <div class="card-title"><span class="step">5</span><h2>Used in WildGuard: who verifies each report, and how long it takes</h2><span class="card-note">Live pending queue</span></div>
+      <div class="field-note"><div class="field-thumb" style="--bg:url('https://images.unsplash.com/photo-1666292332928-a6da653dc842?auto=format&fit=crop&w=700&q=80')"></div><p><b>In the field.</b> With three teams and seven reports, someone has to handle more than two. The pigeonhole principle gives the minimum, and WildGuard's assignment reaches it.</p></div>
+      <p class="applied-role">Reports are taken in priority order and each goes to the least-loaded available team. That defines f : Reports → Teams. The pigeonhole bound ⌈n/m⌉ is the number of joint checkpoints the busiest team needs, so the queue cannot be cleared sooner than ⌈n/m⌉ · L minutes.</p>
+      <div class="table-scroll" id="m5Applied"></div>
+    </article>
+    <nav class="pager"><a href="#m4"><small>Previous</small><b>← 04 · Posets &amp; lattices</b></a><a class="next" href="#m6"><small>Next module</small><b>06 · Graphs →</b></a></nav>
+  </div>
+</section>
+
+<!-- ============================================================ M6 GRAPHS -->
+<section class="view" id="view-m6">
+  <header class="mod-hero" style="--img:url(\'https://images.unsplash.com/photo-1754575740173-52866a523392?auto=format&fit=crop&w=2000&q=80\')"><div class="wrap">
+    <span class="eyebrow">Module 06 · Graphs, subgraphs &amp; bridges</span>
+    <h1>Which corridor, if lost, would split the network?</h1>
+    <p>Removing an edge gives the subgraph G − e. If G − e has more connected components than G, that corridor is a bridge and is the highest priority to verify.</p>
+  </div></header>
+  <div class="wrap">
+    <div class="mod-body">
+      <div class="col">
+        <article class="card">
+          <div class="card-title"><span class="step">1</span><h2>The maths</h2></div>
+          <p class="lead-text">An edge e is a bridge when c(G − e) &gt; c(G), where c counts connected components. A connected graph with |E| = |V| − 1 is a tree, and in a tree every edge is a bridge.</p>
+          <div class="formula">Σ deg(v) = 2|E|<small>handshaking lemma: each edge adds 1 to the degree of both its ends</small></div>
+          <div class="formula">e is a bridge  ⇔  c(G − e) &gt; c(G)</div>
+        </article>
+        <article class="card">
+          <div class="card-title"><span class="step">2</span><h2>Remove corridors (what-if)</h2></div>
+          <div class="edge-list" id="m6Edges"></div>
+          <p class="hint" style="margin-top:14px">Switch a corridor on to remove it from the model. Your saved network is not changed.</p>
+        </article>
+      </div>
+      <div class="col">
+        <article class="card">
+          <div class="card-title"><span class="step">3</span><h2>Working</h2></div>
+          <div class="working" id="m6Working"></div>
+        </article>
+        <article class="card answer" id="m6Answer"></article>
+      </div>
+    </div>
+    <article class="card wide-card">
+      <div class="card-title"><h2>G − e</h2><span class="card-note">Colours = connected components · dashed red = removed</span></div>
+      <svg class="svg-box" id="m6Graph" viewBox="0 0 640 380" role="img" aria-label="Corridor graph after removal"></svg>
+    </article>
+    <article class="card wide-card">
+      <div class="card-title"><h2>Bridge test for every corridor</h2><span class="card-note">c(G − e) compared with c(G)</span></div>
+      <div class="table-scroll" id="m6BridgeTable"></div>
+    </article>
+    <article class="card wide-card applied">
+      <div class="card-title"><span class="step">5</span><h2>Used in WildGuard: the second priority key</h2><span class="card-note">Live pending queue</span></div>
+      <div class="field-note"><div class="field-thumb" style="--bg:url('https://images.unsplash.com/photo-1754575740173-52866a523392?auto=format&fit=crop&w=700&q=80')"></div><p><b>In the field.</b> If a fence blocks a corridor that has a detour, elephants walk around it. If it is the only link, the herd is trapped. That only link is a bridge.</p></div>
+      <p class="applied-role">For every reported corridor, WildGuard checks whether c(G − e) > c(G). A report on a bridge corridor is ranked above one on a corridor that has an alternative route, because losing a bridge cuts reserves off completely.</p>
+      <div class="table-scroll" id="m6Applied"></div>
+    </article>
+    <nav class="pager"><a href="#m5"><small>Previous</small><b>← 05 · Functions</b></a><a class="next" href="#m7"><small>Next module</small><b>07 · Groups &amp; codes →</b></a></nav>
+  </div>
+</section>
+
+<!-- ============================================================ M7 GROUPS & CODES -->
+<section class="view" id="view-m7">
+  <header class="mod-hero" style="--img:url(\'https://images.unsplash.com/photo-1552772588-12592fc15a64?auto=format&fit=crop&w=2000&q=80\')"><div class="wrap">
+    <span class="eyebrow">Module 07 · Algebraic structures &amp; group codes</span>
+    <h1>Did the report's status reach the base camp without error?</h1>
+    <p>The four logic bits V R S O are sent from the field as a 7-bit Hamming code built on the group (ℤ₂, ⊕). One flipped bit in transit can be found and corrected.</p>
+  </div></header>
+  <div class="wrap">
+    <div class="mod-body">
+      <div class="col">
+        <article class="card">
+          <div class="card-title"><span class="step">1</span><h2>The maths</h2></div>
+          <div class="group-grid">
+            <table class="cayley"><tr><th>⊕</th><th>0</th><th>1</th></tr><tr><th>0</th><td>0</td><td>1</td></tr><tr><th>1</th><td>1</td><td>0</td></tr></table>
+            <ul class="axioms" id="m7Axioms"></ul>
+          </div>
+          <div class="formula">p₁ = d₁ ⊕ d₂ ⊕ d₄<br>p₂ = d₁ ⊕ d₃ ⊕ d₄<br>p₄ = d₂ ⊕ d₃ ⊕ d₄<small>codeword positions 1…7 = p₁ p₂ d₁ p₄ d₂ d₃ d₄</small></div>
+          <div class="formula">error position<br>= s₁ + 2·s₂ + 4·s₄<small>sᵢ = XOR of the received bits whose position has bit i set</small></div>
+        </article>
+        <article class="card">
+          <div class="card-title"><span class="step">2</span><h2>Your inputs</h2></div>
+          <div class="inputs">
+            <label class="field">Load V R S O from a saved report
+              <select class="input" id="m7Report"></select>
+            </label>
+            <div class="bool-grid" id="m7Data"></div>
+          </div>
+        </article>
+      </div>
+      <div class="col">
+        <article class="card">
+          <div class="card-title"><span class="step">3</span><h2>Working</h2></div>
+          <div class="working" id="m7Working"></div>
+        </article>
+        <article class="card answer" id="m7Answer"></article>
+      </div>
+    </div>
+    <article class="card wide-card">
+      <div class="card-title"><h2>Received codeword: tap a bit to simulate noise</h2><button class="btn btn-line btn-sm" id="m7Clear">Clear errors</button></div>
+      <div class="bits" id="m7Bits"></div>
+    </article>
+    <article class="card wide-card applied">
+      <div class="card-title"><span class="step">5</span><h2>Used in WildGuard: the field-to-base status packet</h2><span class="card-note">Live pending queue</span></div>
+      <div class="field-note"><div class="field-thumb" style="--bg:url('https://images.unsplash.com/photo-1552772588-12592fc15a64?auto=format&fit=crop&w=700&q=80')"></div><p><b>In the field.</b> Radio and SMS in the forest are patchy. One flipped bit could turn “urgent” into “routine”. The Hamming code catches the error and fixes it.</p></div>
+      <p class="applied-role">Each report's four logic bits are encoded as a 7-bit Hamming codeword before being sent over radio/SMS. Base camp computes the syndrome, corrects one flipped bit, and recomputes U, so noise cannot silently downgrade an urgent report.</p>
+      <div class="table-scroll" id="m7Applied"></div>
+    </article>
+    <nav class="pager"><a href="#m6"><small>Previous</small><b>← 06 · Graphs</b></a><a class="next" href="#data"><small>Inputs</small><b>Field data →</b></a></nav>
+  </div>
+</section>
+
+<!-- ============================================================ FIELD DATA -->
+<section class="view" id="view-data">
+  <header class="mod-hero" style="--img:url(\'https://images.unsplash.com/photo-1743065528943-438a6a981631?auto=format&fit=crop&w=2000&q=80\')"><div class="wrap">
+    <span class="eyebrow">Inputs for every module</span>
+    <h1>Field data</h1>
+    <p>Reports, corridor links and team availability feed all seven calculations. Change anything here and every module updates.</p>
+  </div></header>
+  <div class="wrap">
+    <div class="data-grid">
+      <article class="card">
+        <div class="card-title"><span class="step">+</span><h2>Log a field report</h2></div>
+        <form id="reportForm" class="form-grid" autocomplete="off">
+          <label class="field full">Corridor link<select class="input" name="corridor_id" id="fCorridor" required></select></label>
+          <label class="field">Severity<select class="input" name="severity"><option>Low</option><option>Medium</option><option selected>High</option><option>Critical</option></select></label>
+          <label class="field">Observed at (T)<input class="input" name="observed_at" id="fTime" type="datetime-local" required></label>
+          <label class="field">Locality (L)<input class="input" name="locality" placeholder="e.g. Mavanallah" required></label>
+          <label class="field">GPS coordinates (G)<input class="input" name="coordinates" placeholder="optional"></label>
+          <label class="field full">Photo / evidence reference (P)<input class="input" name="evidence_ref" placeholder="optional"></label>
+          <label class="inline-check full"><input type="checkbox" name="verified"> Verified by a field team (V = 1)</label>
+          <div class="full"><button class="btn btn-amber" type="submit">Save report</button></div>
+        </form>
+      </article>
+      <article class="card">
+        <div class="card-title"><span class="step">▶</span><h2>Demo scenario</h2></div>
+        <p class="lead-text">Nine training events (synthetic, not real incidents): seven overnight reports arrive, the flume report is verified, and the flume barrier blocks the Moyar–Avarahalla link. Watch the home page numbers and each module change.</p>
+        <div class="scenario-steps" id="simSteps"></div>
+        <div class="scenario-now" id="simNow">Press Step to play the first event.</div>
+        <div class="btn-row">
+          <button class="btn btn-dark btn-sm" id="simStep">Step</button>
+          <button class="btn btn-lime btn-sm" id="simPlay">Play all</button>
+          <button class="btn btn-line btn-sm" id="simReset">Reset</button>
+          <button class="btn btn-amber btn-sm" type="button" data-storm>▶ Storm night (resets first)</button>
+        </div>
+      </article>
+    </div>
+
+    <article class="card wide-card" style="margin-top:28px">
+      <div class="card-title"><h2>Reports</h2><span class="card-note">Bits V R S O feed Module 1 and 7 · evidence feeds Module 4</span></div>
+      <div class="table-scroll" id="reportTable"></div>
+    </article>
+
+    <div class="data-grid" style="padding-top:0;padding-bottom:80px">
+      <article class="card">
+        <div class="card-title"><h2>Corridor links (edges)</h2></div>
+        <div class="edge-list" id="linkList"></div>
+        <form id="linkForm" class="form-grid" style="margin-top:22px">
+          <label class="field">Add hypothetical link from<select class="input" id="linkA"></select></label>
+          <label class="field">to<select class="input" id="linkB"></select></label>
+          <div class="full"><button class="btn btn-line btn-sm" type="submit">Add link</button> <span class="hint">Adding a link can create a cycle, so some bridges stop being bridges.</span></div>
+        </form>
+      </article>
+      <article class="card">
+        <div class="card-title"><h2>Field teams (codomain)</h2></div>
+        <div class="edge-list" id="teamList"></div>
+      </article>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer"><div class="wrap"><span>WildGuard · Discrete Mathematics project · CSBS</span><span>Decision support only. Not an official Forest Department dispatch system.</span></div></footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="ticker" id="ticker" hidden><div class="ticker-head"><b id="tickerTitle">Storm night</b><button type="button" id="tickerClose" aria-label="Close">✕</button></div><div class="ticker-bar"><i id="tickerBar"></i></div><p id="tickerText"></p></div>
+<script src="https://cdn.jsdelivr.net/pyodide/v0.27.7/full/pyodide.js"></script>
+<script src="bridge.js"></script>
+<script src="static/app.js"></script>
+</body>
+</html>

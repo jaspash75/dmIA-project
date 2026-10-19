@@ -1,0 +1,10 @@
+event_id,minute,action,corridor_id,incident_type,severity,locality,verified,status,evidence_ref,coordinates,hours_ago,target_event_id,description
+R1,0,report,NIL-KM,Road traffic barrier,High,Mangala–Jakkahalli road,false,Open,,11.6350 76.6930,30,,SIMULATED ONLY: old unverified report of heavy traffic on the road named as a pressure in the 2023 inventory.
+R2,1,report,NIL-S03,Human–elephant conflict,Medium,Mavanallah village edge,false,Open,,,20,,SIMULATED ONLY: villager's message that a herd came near houses last night; no photo or GPS.
+R3,2,report,NIL-S01,Fencing across corridor,Low,Bokkapuram farm boundary,true,Open,PHOTO-102,11.5512 76.6904,10,,SIMULATED ONLY: low wire fence; elephants can still step over it.
+R4,3,report,NIL-S03,Crop raiding,Low,Singara tea estate,false,Open,,,8,,SIMULATED ONLY: crop damage report with no evidence.
+R5,4,report,NIL-S02,Power line / infrastructure,Critical,Avarahalla HT line,true,Open,PHOTO-121,11.5360 76.6521,3,,SIMULATED ONLY: sagging high-tension line across the path; electrocution risk.
+R6,5,report,NIL-S04,Canal / flume channel barrier,Critical,Moyar flume crossing,false,Open,PHOTO-114,,2,,SIMULATED ONLY: herd unable to cross the Masinagudi–Moyar flume channel named in the 2023 inventory.
+R7,6,report,NIL-S01,Fencing across corridor,High,Bokkapuram resort fence,true,Open,PHOTO-118,11.5530 76.6890,1,,SIMULATED ONLY: new solid resort fence across the corridor.
+V6,7,verify_report,NIL-S04,,,,true,,,,,R6,SIMULATED ONLY: a guard confirms the herd is stuck at the flume (R6 verified).
+B6,8,disable_link,NIL-S04,,,,,,,,,,SIMULATED ONLY: the flume barrier is modelled as blocking the Moyar–Avarahalla link.
