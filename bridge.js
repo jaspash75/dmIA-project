@@ -3,8 +3,15 @@
    (Pyodide), runs the project's unchanged app.py + maths.py, and answers the page's /api/...
    requests locally. Data is kept in this browser's localStorage. */
 (function () {
-  const PY_FILES = ['py/flask.py', 'py/database.py', 'py/seed_data.py', 'py/maths.py', 'py/app.py',
-                    'py/data/simulation_events.csv', 'py/data/scenario_storm.csv', 'py/data/public_corridor_baseline.csv'];
+  // Files are looked up flat first (what GitHub's web uploader produces), then in sub-folders.
+  const PY_FILES = ['flask.py', 'database.py', 'seed_data.py', 'maths.py', 'app.py',
+                    'simulation_events.csv', 'scenario_storm.csv', 'public_corridor_baseline.csv'];
+  async function getText(name) {
+    for (const p of [name, 'py/' + name, 'py/data/' + name, 'data/' + name]) {
+      try { const r = await fetch(p, {cache: 'no-cache'}); if (r.ok) return await r.text(); } catch {}
+    }
+    throw new Error('Missing file ' + name + ' (upload it next to index.html)');
+  }
   const KEY = 'wg.static.db';
   const PURE = /^\/api\/(calc\/|number-theory|hamming)/;   // pure calculations: nothing to save
 
@@ -20,9 +27,7 @@
     const dir = '/home/pyodide/wg';
     pyodide.FS.mkdirTree(dir + '/data');
     for (const f of PY_FILES) {
-      const r = await fetch(f, {cache: 'no-cache'});
-      if (!r.ok) throw new Error('Missing file ' + f);
-      pyodide.FS.writeFile(dir + '/' + f.replace(/^py\//, ''), await r.text());
+      pyodide.FS.writeFile(dir + (f.endsWith('.csv') ? '/data/' : '/') + f, await getText(f));
     }
     await pyodide.runPythonAsync(`import sys, os\nsys.path.insert(0, '${dir}')\nos.chdir('${dir}')\nimport app as wg_app`);
     app = pyodide.globals.get('wg_app').app;
